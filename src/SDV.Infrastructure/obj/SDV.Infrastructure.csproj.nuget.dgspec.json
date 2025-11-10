@@ -1,0 +1,270 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1\\SistemaDeVentas\\src\\SDV.Infrastructure\\SDV.Infrastructure.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1\\SistemaDeVentas\\src\\SDV.Application\\SDV.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1\\SistemaDeVentas\\src\\SDV.Application\\SDV.Application.csproj",
+        "projectName": "SDV.Application",
+        "projectPath": "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1\\SistemaDeVentas\\src\\SDV.Application\\SDV.Application.csproj",
+        "packagesPath": "C:\\Users\\Neftali Liriano\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1\\SistemaDeVentas\\src\\SDV.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Neftali Liriano\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1\\SistemaDeVentas\\src\\SDV.Core\\SDV.Core.csproj": {
+                "projectPath": "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1\\SistemaDeVentas\\src\\SDV.Core\\SDV.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.15, 8.0.15]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.15, 8.0.15]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.15, 8.0.15]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1\\SistemaDeVentas\\src\\SDV.Core\\SDV.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1\\SistemaDeVentas\\src\\SDV.Core\\SDV.Core.csproj",
+        "projectName": "SDV.Core",
+        "projectPath": "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1\\SistemaDeVentas\\src\\SDV.Core\\SDV.Core.csproj",
+        "packagesPath": "C:\\Users\\Neftali Liriano\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1\\SistemaDeVentas\\src\\SDV.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Neftali Liriano\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.15, 8.0.15]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.15, 8.0.15]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.15, 8.0.15]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1\\SistemaDeVentas\\src\\SDV.Infrastructure\\SDV.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1\\SistemaDeVentas\\src\\SDV.Infrastructure\\SDV.Infrastructure.csproj",
+        "projectName": "SDV.Infrastructure",
+        "projectPath": "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1\\SistemaDeVentas\\src\\SDV.Infrastructure\\SDV.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Neftali Liriano\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1\\SistemaDeVentas\\src\\SDV.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Neftali Liriano\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1\\SistemaDeVentas\\src\\SDV.Application\\SDV.Application.csproj": {
+                "projectPath": "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1\\SistemaDeVentas\\src\\SDV.Application\\SDV.Application.csproj"
+              },
+              "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1\\SistemaDeVentas\\src\\SDV.Core\\SDV.Core.csproj": {
+                "projectPath": "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1\\SistemaDeVentas\\src\\SDV.Core\\SDV.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "CsvHelper": {
+              "target": "Package",
+              "version": "[31.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Serilog.Extensions.Logging": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.15, 8.0.15]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.15, 8.0.15]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.15, 8.0.15]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Infrastructure\bin\Debug\net8.0\SDV.Infrastructure.deps.json
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Infrastructure\bin\Debug\net8.0\SDV.Infrastructure.dll
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Infrastructure\bin\Debug\net8.0\SDV.Infrastructure.pdb
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Infrastructure\bin\Debug\net8.0\SDV.Application.dll
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Infrastructure\bin\Debug\net8.0\SDV.Core.dll
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Infrastructure\bin\Debug\net8.0\SDV.Core.pdb
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Infrastructure\bin\Debug\net8.0\SDV.Application.pdb
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Infrastructure\obj\Debug\net8.0\SDV.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Infrastructure\obj\Debug\net8.0\SDV.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Infrastructure\obj\Debug\net8.0\SDV.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Infrastructure\obj\Debug\net8.0\SDV.Infrastructure.AssemblyInfo.cs
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Infrastructure\obj\Debug\net8.0\SDV.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Infrastructure\obj\Debug\net8.0\SDV.Infr.B933B87B.Up2Date
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Infrastructure\obj\Debug\net8.0\SDV.Infrastructure.dll
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Infrastructure\obj\Debug\net8.0\refint\SDV.Infrastructure.dll
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Infrastructure\obj\Debug\net8.0\SDV.Infrastructure.pdb
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Infrastructure\obj\Debug\net8.0\ref\SDV.Infrastructure.dll

@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "l4tBjYs8Ylk=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1\\SistemaDeVentas\\src\\SDV.Core\\SDV.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Neftali Liriano\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.15\\microsoft.netcore.app.ref.8.0.15.nupkg.sha512",
+    "C:\\Users\\Neftali Liriano\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.15\\microsoft.windowsdesktop.app.ref.8.0.15.nupkg.sha512",
+    "C:\\Users\\Neftali Liriano\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.15\\microsoft.aspnetcore.app.ref.8.0.15.nupkg.sha512"
+  ],
+  "logs": []
+}

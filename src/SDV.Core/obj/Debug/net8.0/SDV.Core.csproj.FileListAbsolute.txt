@@ -1,0 +1,11 @@
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Core\bin\Debug\net8.0\SDV.Core.deps.json
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Core\bin\Debug\net8.0\SDV.Core.dll
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Core\bin\Debug\net8.0\SDV.Core.pdb
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Core\obj\Debug\net8.0\SDV.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Core\obj\Debug\net8.0\SDV.Core.AssemblyInfoInputs.cache
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Core\obj\Debug\net8.0\SDV.Core.AssemblyInfo.cs
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Core\obj\Debug\net8.0\SDV.Core.csproj.CoreCompileInputs.cache
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Core\obj\Debug\net8.0\SDV.Core.dll
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Core\obj\Debug\net8.0\refint\SDV.Core.dll
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Core\obj\Debug\net8.0\SDV.Core.pdb
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Core\obj\Debug\net8.0\ref\SDV.Core.dll
