@@ -10,6 +10,7 @@ using SDV.Infrastructure.Data.Repositories;
 using SDV.Infrastructure.Extractors.Api;
 using SDV.Infrastructure.Extractors.Csv;
 using SDV.Infrastructure.Extractors.Database;
+using SDV.Infrastructure.Loaders;
 using SDV.WorkerService;
 
 // Configuración de Serilog
@@ -26,7 +27,8 @@ Log.Logger = new LoggerConfiguration()
 try
 {
     Log.Information("═══════════════════════════════════════════════════════");
-    Log.Information("   SISTEMA DE ANÁLISIS DE VENTAS - ETL EXTRACTION    ");
+    Log.Information("   SISTEMA DE ANÁLISIS DE VENTAS - ETL COMPLETO       ");
+    Log.Information("   Fase E: Extracción | Fase L: Carga Dimensiones     ");
     Log.Information("═══════════════════════════════════════════════════════");
 
     var host = Host.CreateDefaultBuilder(args)
@@ -40,12 +42,15 @@ try
                 ?? "Server=127.0.0.1;Port=3307;Database=SalesDataWarehouse;User=NeftaliPC;";
 
             services.AddDbContext<StagingDbContext>(options =>
-                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
+                    .EnableSensitiveDataLogging(false)
+                    .EnableDetailedErrors(true));
 
-            // Registrar Repositorios
+            // ==================== Repositorios ====================
             services.AddScoped<IStagingRepository, StagingRepository>();
+            services.AddScoped<IDimensionRepository, DimensionRepository>();
 
-            // Registrar Extractors (Strategy Pattern)
+            // ==================== Extractores (Fase E) ====================
             services.AddScoped<IDataExtractor<StagingCustomer>, CsvCustomerExtractor>();
             services.AddScoped<IDataExtractor<StagingProduct>, ApiProductExtractor>();
             services.AddScoped<IDataExtractor<StagingOrder>, DatabaseOrderExtractor>();
@@ -53,10 +58,18 @@ try
             // Registrar HttpClient para API
             services.AddHttpClient<ApiProductExtractor>();
 
-            // Registrar Casos de Uso
-            services.AddScoped<ExtractDataUseCase>();
+            // ==================== Loaders de Dimensiones (Fase L) ====================
+            // El orden de registro determina el orden de ejecución
+            services.AddScoped<IDimensionLoader, StatusDimensionLoader>();   // Primero verificar status
+            services.AddScoped<IDimensionLoader, TimeDimensionLoader>();     // Luego verificar tiempo
+            services.AddScoped<IDimensionLoader, CustomerDimensionLoader>(); // Cargar clientes
+            services.AddScoped<IDimensionLoader, ProductDimensionLoader>();  // Cargar productos
 
-            // Registrar Worker Service
+            // ==================== Casos de Uso ====================
+            services.AddScoped<ExtractDataUseCase>();
+            services.AddScoped<LoadDimensionsUseCase>();
+
+            // ==================== Worker Service ====================
             services.AddHostedService<EtlWorker>();
         })
         .Build();
