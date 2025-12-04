@@ -206,39 +206,15 @@ mysql -u root -p < scripts/Script\ ventas.sql
 dotnet restore
 ```
 
+5. **Compilar proyecto**
+```bash
+dotnet build
+```
+
 ## ▶ Ejecución
 
 ```bash
 dotnet run --project src/SDV.WorkerService/SDV.WorkerService.csproj
-```
-
-### Salida esperada:
-
-```
-═══════════════════════════════════════════════════════
-   SISTEMA DE ANÁLISIS DE VENTAS - ETL COMPLETO
-   Fase E: Extracción | Fase L: Carga Dimensiones
-═══════════════════════════════════════════════════════
-
-╔═══════════════════════════════════════════════════════╗
-║         FASE 1: EXTRACCIÓN (E) - STAGING             ║
-╚═══════════════════════════════════════════════════════╝
-✓ 5000 clientes extraídos correctamente
-✓ 50 productos extraídos correctamente
-✓ 100 órdenes extraídas correctamente
-
-╔═══════════════════════════════════════════════════════╗
-║       FASE 2: CARGA (L) - DIMENSIONES DW             ║
-╚═══════════════════════════════════════════════════════╝
-✓ DimStatus verificado: 4 estados disponibles
-✓ DimTime verificado: 4018 registros
-✓ DimCustomer cargado: 5000 insertados
-✓ DimProduct cargado: 50 insertados
-
-╔═══════════════════════════════════════════════════════╗
-║              PROCESO ETL COMPLETADO                  ║
-╚═══════════════════════════════════════════════════════╝
-⏱ TIEMPO TOTAL DE EJECUCIÓN: 00:00:05.234
 ```
 
 ## 🛠 Tecnologías
