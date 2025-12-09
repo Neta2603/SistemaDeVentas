@@ -50,7 +50,11 @@ public class DatabaseOrderExtractor : IDataExtractor<StagingOrder>
         var endDate = new DateTime(2024, 12, 31);
         var dateRange = (endDate - startDate).Days;
 
-        for (int i = 1; i <= 100; i++)
+        // Genera 100 órdenes con OrderIDs del 1 al 100
+        // IMPORTANTE: Los CSVs de order_details deben tener OrderIDs en este rango
+        int numberOfOrders = 100;
+
+        for (int i = 1; i <= numberOfOrders; i++)
         {
             orders.Add(new StagingOrder
             {
@@ -62,6 +66,7 @@ public class DatabaseOrderExtractor : IDataExtractor<StagingOrder>
             });
         }
 
+        _logger.LogInformation("Generadas {Count} órdenes mock (OrderIDs: 1-{Max})", orders.Count, numberOfOrders);
         return orders;
     }
 }

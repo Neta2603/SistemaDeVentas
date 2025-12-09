@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kshAMhNkys8=",
+  "dgSpecHash": "WmPyA0F2IEU=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1\\SistemaDeVentas\\src\\SDV.Infrastructure\\SDV.Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1 - Desarrollo del Proceso ETL en .NET(Arquitectura)\\SistemaDeVentas\\src\\SDV.Infrastructure\\SDV.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Neftali Liriano\\.nuget\\packages\\csvhelper\\31.0.2\\csvhelper.31.0.2.nupkg.sha512",
     "C:\\Users\\Neftali Liriano\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.0\\microsoft.entityframeworkcore.8.0.0.nupkg.sha512",

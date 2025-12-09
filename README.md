@@ -1,264 +1,195 @@
-# Sistema de Análisis de Ventas (SDV) - ETL Data Warehouse
+# Sistema de Análisis de Ventas - Proceso ETL
 
-[![.NET](https://img.shields.io/badge/.NET-8.0-512BD4?logo=dotnet)](https://dotnet.microsoft.com/)
-[![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?logo=mysql&logoColor=white)](https://www.mysql.com/)
-[![Entity Framework](https://img.shields.io/badge/EF%20Core-8.0-512BD4)](https://docs.microsoft.com/ef/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+Sistema completo de extracción, transformación y carga (ETL) desarrollado en .NET 8 con arquitectura limpia, implementando un Data Warehouse en modelo Star Schema para análisis de ventas.
 
-Sistema ETL (Extract, Transform, Load) para análisis de ventas implementado con Clean Architecture en .NET 8. El proyecto construye un Data Warehouse con modelo Star Schema para análisis dimensional.
+### Características Principales
 
-## 📋 Tabla de Contenidos
+- ✅ **Arquitectura Clean Architecture** con separación de capas (Core, Application, Infrastructure, Worker)
+- ✅ **SOLID Principles** aplicados en toda la solución
+- ✅ **Star Schema** con 4 dimensiones y 1 tabla de hechos
+- ✅ **SCD Type 2** para tracking histórico de cambios en dimensiones
+- ✅ **Proceso ETL en 3 Fases** completamente automatizado
+- ✅ **Múltiples fuentes de datos** (CSV, REST API, Database)
+- ✅ **Logging estructurado** con Serilog
+- ✅ **Carga en batch optimizada** para alto rendimiento
 
-- [Arquitectura](#-arquitectura)
-- [Fases del Proyecto](#-fases-del-proyecto)
-- [Estructura del Proyecto](#-estructura-del-proyecto)
-- [Modelo de Datos](#-modelo-de-datos)
-- [Requisitos](#-requisitos)
-- [Instalación](#-instalación)
-- [Ejecución](#-ejecución)
-- [Tecnologías](#-tecnologías)
-
-## 🏗 Arquitectura
-
-El proyecto implementa **Clean Architecture** con las siguientes capas:
+## 🏗️ Arquitectura del Sistema
 
 ```
-┌─────────────────────────────────────┐
-│ Presentation (SDV.WorkerService)    │ ← Worker Service, DI Container
-├─────────────────────────────────────┤
-│ Application (SDV.Application)       │ ← Casos de uso, Orquestación
-├─────────────────────────────────────┤
-│ Core (SDV.Core)                     │ ← Entidades, Interfaces
-├─────────────────────────────────────┤
-│ Infrastructure (SDV.Infrastructure) │ ← EF Core, Repositorios, Extractors
-└─────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────┐
+│                    FUENTES DE DATOS                         │
+├─────────────────────────────────────────────────────────────┤
+│  📄 CSV Files  │  🌐 REST APIs  │  💾 External Database    │
+└─────────┬───────────────┬────────────────┬─────────────────┘
+          │               │                │
+          ▼               ▼                ▼
+┌─────────────────────────────────────────────────────────────┐
+│                    STAGING LAYER                            │
+│  • StagingCustomers     • StagingProducts                   │
+│  • StagingOrders        • StagingOrderDetails               │
+└──────────────────────────┬──────────────────────────────────┘
+                           │ ETL Transformación
+                           ▼
+┌─────────────────────────────────────────────────────────────┐
+│              DATA WAREHOUSE (Star Schema)                   │
+├─────────────────────────────────────────────────────────────┤
+│                    DIMENSIONES                              │
+│  • DimCustomer (SCD Type 2)                                 │
+│  • DimProduct (SCD Type 2)                                  │
+│  • DimTime (Precalculada 2020-2030)                         │
+│  • DimStatus (Estados de órdenes)                           │
+├─────────────────────────────────────────────────────────────┤
+│                   TABLA DE HECHOS                           │
+│  • FactSales (Grain: línea de detalle por orden)            │
+│    - CustomerKey, ProductKey, TimeKey, StatusKey (FKs)      │
+│    - Quantity, UnitPrice, TotalPrice (Métricas)             │
+└──────────────────────────┬──────────────────────────────────┘
+                           │
+                           ▼
+                    Power BI Dashboards
 ```
-
-### Patrones Implementados
-
-| Patrón | Implementación |
-|--------|----------------|
-| **Strategy** | Extractores y Loaders intercambiables |
-| **Repository** | Abstracción de acceso a datos |
-| **Dependency Injection** | Constructor injection en todas las capas |
-| **Unit of Work** | DbContext de Entity Framework |
-
-## 📊 Fases del Proyecto
-
-### ✅ Fase 1: Extracción (E) - Completada
-Extracción de datos desde múltiples fuentes hacia tablas Staging:
-
-| Fuente | Extractor | Destino |
-|--------|-----------|---------|
-| CSV (customers.csv) | `CsvCustomerExtractor` | StagingCustomers |
-| API REST (Mock) | `ApiProductExtractor` | StagingProducts |
-| Base de Datos | `DatabaseOrderExtractor` | StagingOrders |
-
-### ✅ Fase 2: Carga de Dimensiones (L) - Completada
-Carga de datos desde Staging hacia tablas de dimensiones del Data Warehouse:
-
-| Loader | Dimensión | Tipo |
-|--------|-----------|------|
-| `CustomerDimensionLoader` | DimCustomer | SCD Tipo 2 |
-| `ProductDimensionLoader` | DimProduct | SCD Tipo 2 |
-| `TimeDimensionLoader` | DimTime | Verificación |
-| `StatusDimensionLoader` | DimStatus | Verificación |
-
-### 🔲 Fase 3: Transformación y Carga de Hechos (T+L) - Pendiente
-- Transformación de datos
-- Carga de tabla de hechos `FactSales`
 
 ## 📁 Estructura del Proyecto
 
 ```
 SistemaDeVentas/
-├── data/                          # Archivos CSV de datos fuente
+│
+├── src/
+│   ├── SDV.Core/                          # Capa de dominio
+│   │   ├── Entities/
+│   │   │   ├── Staging/                   # Entidades staging
+│   │   │   ├── Dimensions/                # Entidades dimensiones
+│   │   │   └── Facts/                     # Entidades hechos
+│   │   └── Interfaces/                    # Contratos e interfaces
+│   │
+│   ├── SDV.Application/                   # Capa de aplicación
+│   │   └── UseCases/
+│   │       ├── ExtractDataUseCase.cs      # Fase 1: Extracción
+│   │       ├── LoadDimensionsUseCase.cs   # Fase 2: Dimensiones
+│   │       └── LoadFactsUseCase.cs        # Fase 3: Facts
+│   │
+│   ├── SDV.Infrastructure/                # Capa de infraestructura
+│   │   ├── Data/
+│   │   │   ├── StagingDbContext.cs        # EF Core DbContext
+│   │   │   └── Repositories/              # Repositorios
+│   │   ├── Extractors/
+│   │   │   ├── Csv/                       # Extractores CSV
+│   │   │   ├── Api/                       # Extractores API
+│   │   │   └── Database/                  # Extractores Database
+│   │   └── Loaders/                       # Loaders de dimensiones y facts
+│   │
+│   └── SDV.WorkerService/                 # Worker Service (punto de entrada)
+│       ├── Program.cs                     # Configuración DI
+│       ├── EtlWorker.cs                   # Orquestador ETL
+│       └── appsettings.json               # Configuración
+│
+├── data/                                  # Archivos CSV de entrada
 │   ├── customers.csv
 │   ├── products.csv
-│   └── orders.csv
-├── scripts/
-│   └── Script ventas.sql          # DDL del Data Warehouse
-├── src/
-│   ├── SDV.Core/                  # Capa de dominio
-│   │   ├── Entities/
-│   │   │   ├── Staging/           # Entidades de staging
-│   │   │   │   ├── StagingCustomer.cs
-│   │   │   │   ├── StagingProduct.cs
-│   │   │   │   ├── StagingOrder.cs
-│   │   │   │   └── StagingOrderDetail.cs
-│   │   │   └── Dimensions/        # Entidades de dimensiones
-│   │   │       ├── DimCustomer.cs
-│   │   │       ├── DimProduct.cs
-│   │   │       ├── DimTime.cs
-│   │   │       └── DimStatus.cs
-│   │   └── Interfaces/
-│   │       ├── IDataExtractor.cs
-│   │       ├── IStagingRepository.cs
-│   │       ├── IDimensionRepository.cs
-│   │       └── IDimensionLoader.cs
-│   │
-│   ├── SDV.Application/           # Capa de aplicación
-│   │   └── UseCases/
-│   │       ├── ExtractDataUseCase.cs
-│   │       └── LoadDimensionsUseCase.cs
-│   │
-│   ├── SDV.Infrastructure/        # Capa de infraestructura
-│   │   ├── Data/
-│   │   │   ├── StagingDbContext.cs
-│   │   │   └── Repositories/
-│   │   │       ├── StagingRepository.cs
-│   │   │       └── DimensionRepository.cs
-│   │   ├── Extractors/            # Extractores de datos
-│   │   │   ├── Csv/
-│   │   │   │   └── CsvCustomerExtractor.cs
-│   │   │   ├── Api/
-│   │   │   │   └── ApiProductExtractor.cs
-│   │   │   └── Database/
-│   │   │       └── DatabaseOrderExtractor.cs
-│   │   └── Loaders/               # Cargadores de dimensiones
-│   │       ├── CustomerDimensionLoader.cs
-│   │       ├── ProductDimensionLoader.cs
-│   │       ├── TimeDimensionLoader.cs
-│   │       └── StatusDimensionLoader.cs
-│   │
-│   └── SDV.WorkerService/         # Capa de presentación
-│       ├── Program.cs
-│       ├── EtlWorker.cs
-│       └── appsettings.json
+│   ├── orders.csv
+│   └── order_details.csv
 │
-└── SistemaDeVentas.sln
+└── scripts/
+   └── Script_ventas.sql                  # Script DDL del Data Warehouse
 ```
 
-## 🗄 Modelo de Datos
+## 🚀 Requisitos
 
-### Star Schema
+- **.NET 8 SDK** o superior
+- **MySQL 8.0+** (puerto 3307 por defecto)
+- **Visual Studio 2022** o **VS Code** con extensión C#
+- Cliente MySQL
 
-```
-                    ┌─────────────┐
-                    │  DimTime    │
-                    │─────────────│
-                    │ TimeKey(PK) │
-                    │ FullDate    │
-                    │ Year        │
-                    │ Quarter     │
-                    │ Month       │
-                    └──────┬──────┘
-                           │
-┌─────────────┐    ┌───────┴───────┐    ┌─────────────┐
-│ DimCustomer │    │   FactSales   │    │ DimProduct  │
-│─────────────│    │───────────────│    │─────────────│
-│CustomerKey  │◄───│ CustomerKey   │───►│ ProductKey  │
-│ CustomerID  │    │ ProductKey    │    │ ProductID   │
-│ FirstName   │    │ TimeKey       │    │ ProductName │
-│ LastName    │    │ StatusKey     │    │ Category    │
-│ Email       │    │ Quantity      │    │ Price       │
-│ City        │    │ TotalPrice    │    │ IsCurrent   │
-│ IsCurrent   │    └───────┬───────┘    └─────────────┘
-└─────────────┘            │
-                    ┌──────┴──────┐
-                    │  DimStatus  │
-                    │─────────────│
-                    │ StatusKey   │
-                    │ StatusName  │
-                    └─────────────┘
-```
+## ⚙️ Configuración Inicial
 
-### SCD Tipo 2 (Slowly Changing Dimension)
+### 1. Clonar el Repositorio
 
-Las dimensiones `DimCustomer` y `DimProduct` implementan SCD Tipo 2 para rastrear cambios históricos:
-
-| Campo | Descripción |
-|-------|-------------|
-| `StartDate` | Fecha de inicio de validez |
-| `EndDate` | Fecha de fin (9999-12-31 = activo) |
-| `IsCurrent` | Flag de registro actual |
-
-## 📋 Requisitos
-
-- [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
-- [MySQL 8.0+](https://dev.mysql.com/downloads/)
-- Visual Studio 2022 / VS Code / Rider
-
-## 🚀 Instalación
-
-1. **Clonar el repositorio**
 ```bash
 git clone https://github.com/Neta2603/SistemaDeVentas.git
 cd SistemaDeVentas
 ```
 
-2. **Crear la base de datos**
-```bash
-mysql -u root -p < scripts/Script\ ventas.sql
-```
+### 2. Configurar Base de Datos
 
-3. **Configurar conexión** en `src/SDV.WorkerService/appsettings.json`:
+Editar `src/SDV.WorkerService/appsettings.json` con tus credenciales MySQL:
+
 ```json
 {
   "ConnectionStrings": {
-    "StagingDb": "Server=127.0.0.1;Port=3307;Database=SalesDataWarehouse;User=tu_usuario;Password=tu_password;"
+    "StagingDb": "Server=127.0.0.1;Port=3307;Database=SalesDataWarehouse;User=TuUsuario;Password=TuPassword;"
   }
 }
 ```
 
-4. **Restaurar paquetes**
+### 3. Crear el Data Warehouse
+
+Ejecutar el script SQL para crear la estructura completa:
+
 ```bash
-dotnet restore
+mysql -h 127.0.0.1 -P 3307 -u TuUsuario -p < scripts/Script_ventas.sql
 ```
 
-## ▶ Ejecución
+### 4. Preparar Datos de Entrada
+
+Verificar que los archivos CSV estén en la carpeta `data/`:
 
 ```bash
+data/
+├── customers.csv       # Datos de clientes
+├── products.csv        # Catálogo de productos
+├── orders.csv          # Órdenes de venta
+└── order_details.csv   # Líneas de detalle de órdenes
+```
+
+## Ejecución del Proceso ETL
+
+```bash
+# Compilar el proyecto
+dotnet build
+
+# Ejecutar el Worker Service
 dotnet run --project src/SDV.WorkerService/SDV.WorkerService.csproj
+```4
+
+## Fases del Proceso ETL
+
+### Fase 1: Extracción (E)
+Extrae datos desde múltiples fuentes hacia tablas Staging:
+
+- **CSV → StagingCustomers** 
+- **REST API → StagingProducts** 
+- **Database → StagingOrders** 
+- **CSV → StagingOrderDetails** 
+
+### Fase 2: Carga de Dimensiones (L)
+Transforma y carga datos desde Staging hacia Dimensiones con SCD Type 2:
+
+- **DimStatus**
+- **DimTime** 
+- **DimCustomer** 
+- **DimProduct** 
+
+### Fase 3: Carga de Facts (F)
+Consolida hechos de ventas integrando todas las dimensiones:
+
+1. **Limpieza:** TRUNCATE de FactSales (migrate:fresh)
+2. **Transformación:** JOIN de staging con lookups a dimensiones
+3. **Carga:** Inserción batch optimizada de FactSales
+
+# Limpiar y reconstruir
+dotnet clean
+dotnet build --no-incremental
 ```
 
-### Salida esperada:
+## Dependencias Principales
 
-```
-═══════════════════════════════════════════════════════
-   SISTEMA DE ANÁLISIS DE VENTAS - ETL COMPLETO
-   Fase E: Extracción | Fase L: Carga Dimensiones
-═══════════════════════════════════════════════════════
+- **Microsoft.EntityFrameworkCore** - ORM para acceso a datos
+- **Pomelo.EntityFrameworkCore.MySql** - Provider MySQL para EF Core
+- **Serilog** - Logging estructurado
+- **CsvHelper** - Lectura/escritura de archivos CSV
 
-╔═══════════════════════════════════════════════════════╗
-║         FASE 1: EXTRACCIÓN (E) - STAGING             ║
-╚═══════════════════════════════════════════════════════╝
-✓ 5000 clientes extraídos correctamente
-✓ 50 productos extraídos correctamente
-✓ 100 órdenes extraídas correctamente
+## Autor
 
-╔═══════════════════════════════════════════════════════╗
-║       FASE 2: CARGA (L) - DIMENSIONES DW             ║
-╚═══════════════════════════════════════════════════════╝
-✓ DimStatus verificado: 4 estados disponibles
-✓ DimTime verificado: 4018 registros
-✓ DimCustomer cargado: 5000 insertados
-✓ DimProduct cargado: 50 insertados
+**Edward Neftali Liriano Gomez - 2022-0437**  
+Electiva 1: Big Data - Profesor Francis Ramírez
 
-╔═══════════════════════════════════════════════════════╗
-║              PROCESO ETL COMPLETADO                  ║
-╚═══════════════════════════════════════════════════════╝
-⏱ TIEMPO TOTAL DE EJECUCIÓN: 00:00:05.234
-```
-
-## 🛠 Tecnologías
-
-| Tecnología | Versión | Uso |
-|------------|---------|-----|
-| .NET | 8.0 | Framework principal |
-| Entity Framework Core | 8.0 | ORM |
-| Pomelo.EntityFrameworkCore.MySql | 8.0 | Proveedor MySQL |
-| Serilog | Latest | Logging estructurado |
-| CsvHelper | Latest | Parsing de CSV |
-| MySQL | 8.0 | Base de datos |
-
-## 👤 Autor
-
-**Edward Neftalí Liriano Gómez**
-- Matrícula: 2022-0437
-- GitHub: [@Neta2603](https://github.com/Neta2603)
-
-## 📄 Licencia
-
-Este proyecto es parte de la asignatura **Electiva 1 (Big Data)** del ITLA.
-Profesor: Francis Ramírez

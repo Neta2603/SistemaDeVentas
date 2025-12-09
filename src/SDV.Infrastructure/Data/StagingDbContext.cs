@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SDV.Core.Entities.Dimensions;
+using SDV.Core.Entities.Facts;
 using SDV.Core.Entities.Staging;
 
 namespace SDV.Infrastructure.Data;
@@ -23,8 +24,11 @@ public class StagingDbContext : DbContext
     // ==================== Tablas Dimensiones ====================
     public DbSet<DimCustomer> DimCustomers { get; set; }
     public DbSet<DimProduct> DimProducts { get; set; }
-    public DbSet<DimTime> DimTime { get; set; }
-    public DbSet<DimStatus> DimStatus { get; set; }
+    public DbSet<DimTime> DimTimes { get; set; }
+    public DbSet<DimStatus> DimStatuses { get; set; }
+
+    // ==================== Tablas de Hechos ====================
+    public DbSet<FactSales> FactSales { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -147,6 +151,28 @@ public class StagingDbContext : DbContext
             
             // Índice único en StatusName
             entity.HasIndex(e => e.StatusName).IsUnique().HasDatabaseName("idx_statusname");
+        });
+
+        // ==================== Configuración Tabla de Hechos ====================
+
+        // Configuración de FactSales
+        modelBuilder.Entity<FactSales>(entity =>
+        {
+            entity.ToTable("FactSales");
+            entity.HasKey(e => e.SalesKey);
+            entity.Property(e => e.SalesKey).ValueGeneratedOnAdd();
+            entity.Property(e => e.UnitPrice).HasColumnType("decimal(10,2)");
+            entity.Property(e => e.TotalPrice).HasColumnType("decimal(10,2)");
+            entity.Property(e => e.LoadDate).HasDefaultValueSql("CURRENT_TIMESTAMP");
+            
+            // Índices para optimización de consultas
+            entity.HasIndex(e => e.CustomerKey).HasDatabaseName("idx_customerkey");
+            entity.HasIndex(e => e.ProductKey).HasDatabaseName("idx_productkey");
+            entity.HasIndex(e => e.TimeKey).HasDatabaseName("idx_timekey");
+            entity.HasIndex(e => e.StatusKey).HasDatabaseName("idx_statuskey");
+            entity.HasIndex(e => e.OrderID).HasDatabaseName("idx_orderid");
+            entity.HasIndex(e => new { e.TimeKey, e.CustomerKey }).HasDatabaseName("idx_time_customer");
+            entity.HasIndex(e => new { e.TimeKey, e.ProductKey }).HasDatabaseName("idx_time_product");
         });
     }
 }

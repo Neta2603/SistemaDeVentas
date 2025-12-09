@@ -26,10 +26,10 @@ Log.Logger = new LoggerConfiguration()
 
 try
 {
-    Log.Information("═══════════════════════════════════════════════════════");
-    Log.Information("   SISTEMA DE ANÁLISIS DE VENTAS - ETL COMPLETO       ");
-    Log.Information("   Fase E: Extracción | Fase L: Carga Dimensiones     ");
-    Log.Information("═══════════════════════════════════════════════════════");
+    Log.Information("════════════════════════════════════════════════════════════");
+    Log.Information("   SISTEMA DE ANÁLISIS DE VENTAS - ETL COMPLETO          ");
+    Log.Information("   Fase E: Extracción | Fase L: Dimensiones | Fase F: Facts ");
+    Log.Information("════════════════════════════════════════════════════════════");
 
     var host = Host.CreateDefaultBuilder(args)
         .UseSerilog()
@@ -49,11 +49,13 @@ try
             // ==================== Repositorios ====================
             services.AddScoped<IStagingRepository, StagingRepository>();
             services.AddScoped<IDimensionRepository, DimensionRepository>();
+            services.AddScoped<IFactRepository, FactRepository>();
 
             // ==================== Extractores (Fase E) ====================
             services.AddScoped<IDataExtractor<StagingCustomer>, CsvCustomerExtractor>();
             services.AddScoped<IDataExtractor<StagingProduct>, ApiProductExtractor>();
             services.AddScoped<IDataExtractor<StagingOrder>, DatabaseOrderExtractor>();
+            services.AddScoped<IDataExtractor<StagingOrderDetail>, CsvOrderDetailExtractor>();
 
             // Registrar HttpClient para API
             services.AddHttpClient<ApiProductExtractor>();
@@ -65,9 +67,13 @@ try
             services.AddScoped<IDimensionLoader, CustomerDimensionLoader>(); // Cargar clientes
             services.AddScoped<IDimensionLoader, ProductDimensionLoader>();  // Cargar productos
 
+            // ==================== Loaders de Tablas de Hechos (Fase F) ====================
+            services.AddScoped<IFactLoader, FactSalesLoader>();
+
             // ==================== Casos de Uso ====================
             services.AddScoped<ExtractDataUseCase>();
             services.AddScoped<LoadDimensionsUseCase>();
+            services.AddScoped<LoadFactsUseCase>();
 
             // ==================== Worker Service ====================
             services.AddHostedService<EtlWorker>();

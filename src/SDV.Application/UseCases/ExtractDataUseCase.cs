@@ -12,6 +12,7 @@ public class ExtractDataUseCase
     private readonly IDataExtractor<StagingCustomer> _customerExtractor;
     private readonly IDataExtractor<StagingProduct> _productExtractor;
     private readonly IDataExtractor<StagingOrder> _orderExtractor;
+    private readonly IDataExtractor<StagingOrderDetail> _orderDetailExtractor;
     private readonly IStagingRepository _stagingRepository;
     private readonly ILogger<ExtractDataUseCase> _logger;
 
@@ -19,12 +20,14 @@ public class ExtractDataUseCase
         IDataExtractor<StagingCustomer> customerExtractor,
         IDataExtractor<StagingProduct> productExtractor,
         IDataExtractor<StagingOrder> orderExtractor,
+        IDataExtractor<StagingOrderDetail> orderDetailExtractor,
         IStagingRepository stagingRepository,
         ILogger<ExtractDataUseCase> logger)
     {
         _customerExtractor = customerExtractor;
         _productExtractor = productExtractor;
         _orderExtractor = orderExtractor;
+        _orderDetailExtractor = orderDetailExtractor;
         _stagingRepository = stagingRepository;
         _logger = logger;
     }
@@ -41,6 +44,11 @@ public class ExtractDataUseCase
 
         try
         {
+            // 0. Limpiar tablas staging antes de extraer
+            _logger.LogInformation("Limpiando tablas staging...");
+            await _stagingRepository.CleanupStagingTablesAsync();
+            _logger.LogInformation("✓ Tablas staging limpiadas");
+            _logger.LogInformation("");
             // 1. Extraer Clientes
             _logger.LogInformation("Extrayendo clientes desde {Source}...", _customerExtractor.ExtractorName);
             var customers = await _customerExtractor.ExtractAsync();
@@ -77,6 +85,18 @@ public class ExtractDataUseCase
                 _logger.LogInformation("✓ {Count} órdenes extraídas correctamente", orderList.Count);
             }
 
+            // 4. Extraer Detalles de Órdenes
+            _logger.LogInformation("Extrayendo detalles de órdenes desde CSV...");
+            var orderDetails = await _orderDetailExtractor.ExtractAsync();
+            var orderDetailList = orderDetails.ToList();
+            
+            if (orderDetailList.Any())
+            {
+                await _stagingRepository.BulkInsertOrderDetailsAsync(orderDetailList);
+                result.OrderDetailsExtracted = orderDetailList.Count;
+                _logger.LogInformation("✓ {Count} detalles de órdenes extraídos correctamente", orderDetailList.Count);
+            }
+
             result.Success = true;
             result.ExecutionTime = DateTime.Now - startTime;
             
@@ -106,6 +126,7 @@ public class ExtractionResult
     public int CustomersExtracted { get; set; }
     public int ProductsExtracted { get; set; }
     public int OrdersExtracted { get; set; }
+    public int OrderDetailsExtracted { get; set; }
     public TimeSpan ExecutionTime { get; set; }
     public string? ErrorMessage { get; set; }
 }

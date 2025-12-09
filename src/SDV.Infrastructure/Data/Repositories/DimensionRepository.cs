@@ -95,30 +95,30 @@ public class DimensionRepository : IDimensionRepository
 
     public async Task<int> GetTimeRecordCountAsync()
     {
-        return await _context.DimTime.CountAsync();
+        return await _context.DimTimes.CountAsync();
     }
 
     public async Task<DimTime?> GetTimeByDateAsync(DateTime date)
     {
         var timeKey = int.Parse(date.ToString("yyyyMMdd"));
-        return await _context.DimTime.FindAsync(timeKey);
+        return await _context.DimTimes.FindAsync(timeKey);
     }
 
     // ==================== DimStatus ====================
 
     public async Task<IEnumerable<DimStatus>> GetAllStatusesAsync()
     {
-        return await _context.DimStatus.ToListAsync();
+        return await _context.DimStatuses.ToListAsync();
     }
 
     public async Task<int> GetStatusCountAsync()
     {
-        return await _context.DimStatus.CountAsync();
+        return await _context.DimStatuses.CountAsync();
     }
 
     public async Task<DimStatus?> GetStatusByNameAsync(string statusName)
     {
-        return await _context.DimStatus
+        return await _context.DimStatuses
             .FirstOrDefaultAsync(s => s.StatusName == statusName);
     }
 

@@ -13,3 +13,19 @@ C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\
 C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Application\obj\Debug\net8.0\refint\SDV.Application.dll
 C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Application\obj\Debug\net8.0\SDV.Application.pdb
 C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1\SistemaDeVentas\src\SDV.Application\obj\Debug\net8.0\ref\SDV.Application.dll
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1 - Desarrollo del Proceso ETL en .NET(Arquitectura)\SistemaDeVentas\src\SDV.Application\bin\Debug\net8.0\SDV.Application.deps.json
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1 - Desarrollo del Proceso ETL en .NET(Arquitectura)\SistemaDeVentas\src\SDV.Application\bin\Debug\net8.0\SDV.Application.dll
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1 - Desarrollo del Proceso ETL en .NET(Arquitectura)\SistemaDeVentas\src\SDV.Application\bin\Debug\net8.0\SDV.Application.pdb
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1 - Desarrollo del Proceso ETL en .NET(Arquitectura)\SistemaDeVentas\src\SDV.Application\bin\Debug\net8.0\SDV.Core.dll
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1 - Desarrollo del Proceso ETL en .NET(Arquitectura)\SistemaDeVentas\src\SDV.Application\bin\Debug\net8.0\SDV.Core.pdb
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1 - Desarrollo del Proceso ETL en .NET(Arquitectura)\SistemaDeVentas\src\SDV.Application\obj\Debug\net8.0\SDV.Application.csproj.AssemblyReference.cache
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1 - Desarrollo del Proceso ETL en .NET(Arquitectura)\SistemaDeVentas\src\SDV.Application\obj\Debug\net8.0\SDV.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1 - Desarrollo del Proceso ETL en .NET(Arquitectura)\SistemaDeVentas\src\SDV.Application\obj\Debug\net8.0\SDV.Application.AssemblyInfoInputs.cache
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1 - Desarrollo del Proceso ETL en .NET(Arquitectura)\SistemaDeVentas\src\SDV.Application\obj\Debug\net8.0\SDV.Application.AssemblyInfo.cs
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1 - Desarrollo del Proceso ETL en .NET(Arquitectura)\SistemaDeVentas\src\SDV.Application\obj\Debug\net8.0\SDV.Application.csproj.CoreCompileInputs.cache
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1 - Desarrollo del Proceso ETL en .NET(Arquitectura)\SistemaDeVentas\src\SDV.Application\obj\Debug\net8.0\SDV.Application.sourcelink.json
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1 - Desarrollo del Proceso ETL en .NET(Arquitectura)\SistemaDeVentas\src\SDV.Application\obj\Debug\net8.0\SDV.Appl.ABB3A9BA.Up2Date
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1 - Desarrollo del Proceso ETL en .NET(Arquitectura)\SistemaDeVentas\src\SDV.Application\obj\Debug\net8.0\SDV.Application.dll
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1 - Desarrollo del Proceso ETL en .NET(Arquitectura)\SistemaDeVentas\src\SDV.Application\obj\Debug\net8.0\refint\SDV.Application.dll
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1 - Desarrollo del Proceso ETL en .NET(Arquitectura)\SistemaDeVentas\src\SDV.Application\obj\Debug\net8.0\SDV.Application.pdb
+C:\Users\Neftali Liriano\Downloads\Personal\ITLA\Electiva 1 Francis\Actividad 1 - Desarrollo del Proceso ETL en .NET(Arquitectura)\SistemaDeVentas\src\SDV.Application\obj\Debug\net8.0\ref\SDV.Application.dll

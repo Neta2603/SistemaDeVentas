@@ -93,4 +93,35 @@ public class StagingRepository : IStagingRepository
     {
         return await _context.StagingOrders.CountAsync();
     }
+
+    /// <summary>
+    /// Limpia todas las tablas staging (TRUNCATE)
+    /// Similar a "migrate:fresh" - elimina todos los datos para empezar limpio
+    /// </summary>
+    public async Task CleanupStagingTablesAsync()
+    {
+        try
+        {
+            _logger.LogInformation("Iniciando limpieza de tablas staging...");
+
+            // Deshabilitar validación de foreign keys temporalmente
+            await _context.Database.ExecuteSqlRawAsync("SET FOREIGN_KEY_CHECKS = 0");
+
+            // Limpiar cada tabla staging
+            await _context.Database.ExecuteSqlRawAsync("TRUNCATE TABLE StagingCustomers");
+            await _context.Database.ExecuteSqlRawAsync("TRUNCATE TABLE StagingProducts");
+            await _context.Database.ExecuteSqlRawAsync("TRUNCATE TABLE StagingOrders");
+            await _context.Database.ExecuteSqlRawAsync("TRUNCATE TABLE StagingOrderDetails");
+
+            // Rehabilitar validación de foreign keys
+            await _context.Database.ExecuteSqlRawAsync("SET FOREIGN_KEY_CHECKS = 1");
+
+            _logger.LogInformation("✓ Todas las tablas staging limpiadas exitosamente (TRUNCATE)");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error limpiando tablas staging");
+            throw;
+        }
+    }
 }

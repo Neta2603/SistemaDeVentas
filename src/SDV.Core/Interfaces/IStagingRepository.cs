@@ -14,4 +14,5 @@ public interface IStagingRepository
     Task<int> GetCustomerCountAsync();
     Task<int> GetProductCountAsync();
     Task<int> GetOrderCountAsync();
+    Task CleanupStagingTablesAsync();
 }

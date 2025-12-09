@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1\\SistemaDeVentas\\src\\SDV.Core\\SDV.Core.csproj": {}
+    "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1 - Desarrollo del Proceso ETL en .NET(Arquitectura)\\SistemaDeVentas\\src\\SDV.Core\\SDV.Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1\\SistemaDeVentas\\src\\SDV.Core\\SDV.Core.csproj": {
+    "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1 - Desarrollo del Proceso ETL en .NET(Arquitectura)\\SistemaDeVentas\\src\\SDV.Core\\SDV.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1\\SistemaDeVentas\\src\\SDV.Core\\SDV.Core.csproj",
+        "projectUniqueName": "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1 - Desarrollo del Proceso ETL en .NET(Arquitectura)\\SistemaDeVentas\\src\\SDV.Core\\SDV.Core.csproj",
         "projectName": "SDV.Core",
-        "projectPath": "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1\\SistemaDeVentas\\src\\SDV.Core\\SDV.Core.csproj",
+        "projectPath": "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1 - Desarrollo del Proceso ETL en .NET(Arquitectura)\\SistemaDeVentas\\src\\SDV.Core\\SDV.Core.csproj",
         "packagesPath": "C:\\Users\\Neftali Liriano\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1\\SistemaDeVentas\\src\\SDV.Core\\obj\\",
+        "outputPath": "C:\\Users\\Neftali Liriano\\Downloads\\Personal\\ITLA\\Electiva 1 Francis\\Actividad 1 - Desarrollo del Proceso ETL en .NET(Arquitectura)\\SistemaDeVentas\\src\\SDV.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Neftali Liriano\\AppData\\Roaming\\NuGet\\NuGet.Config"
